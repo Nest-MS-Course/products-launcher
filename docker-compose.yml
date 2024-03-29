@@ -60,13 +60,13 @@ services:
 # ============
 # Payments Ms
 # ============
-  payments-ms:
-    container_name: payments-ms
-    build: ./payments-ms
+  payment-ms:
+    container_name: payment-ms
+    build: ./payment-ms
     ports:
       - 3003:3003
     volumes:
-      - ./payments-ms/src:/usr/src/app/src
+      - ./payment-ms/src:/usr/src/app/src
     command: npm run start:dev
     environment:
       - PORT=3003
