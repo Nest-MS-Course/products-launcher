@@ -75,3 +75,15 @@ services:
       - STRIPE_SIGNING_SECRET=whsec_lXVNnleqn3AxnuISmVVHmyT21gmcVXmZ
       - STRIPE_SUCCESS_URL=http://localhost:3003/payments/success
       - STRIPE_CANCEL_URL=http://localhost:3003/payments/cancel
+
+  auth-ms:
+    container_name: auth-ms
+    build: ./auth-ms
+    volumes:
+      - ./auth-ms/src:/usr/src/app/src
+    command: npm run start:dev
+    environment:
+      - PORT=3004
+      - NATS_SERVERS=nats://nats-server:4222
+      - DATABASE_URL=${DATABASE_URL_AUTH}
+      - JWT_SECRET=${JWT_SECRET_AUTH}
